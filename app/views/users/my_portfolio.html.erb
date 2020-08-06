@@ -3,7 +3,9 @@
     <hr class="my-4">
     <div class="row">
         <div class="col-6">
-
+            <% if !@tracked_stocks.empty? %>
+                <%= render 'stocks/list' %>
+            <% end %>
         </div>
         <div class="col-6 search--stock p-3">
             <h5 class="text-center">Search Stocks</h5>
