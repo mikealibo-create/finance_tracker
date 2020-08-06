@@ -4,5 +4,8 @@
         <p><b>Symbol: </b><%= @stock.ticker %></p>
         <p><b>Name: </b><%= @stock.name %></p>
         <p><b>Price: </b><%= @stock.last_price %></p>
+        <%= link_to 'Add to Portfolio', user_stocks_path(user: current_user, 
+                                        ticker: @stock.ticker), 
+                                        class: 'btn btn-sm btn-success', method: :post %>
     </div>
 <% end %>
