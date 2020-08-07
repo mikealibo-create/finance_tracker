@@ -1,0 +1,20 @@
+<%= render 'layouts/messages' %>
+<% if @friends %>
+    <% @friends.each do |f| %>
+        <div class="row friend-card m-2 p-3">
+            <div class="col-sm-12 col-md-10 col-lg-11">
+                <p><b>Email: </b><%= f.email %></p>
+                <p class="m-0"><b>Name: </b><%= f.first_name %> <%= f.last_name %></p>
+            </div>
+            <div class="col-sm-12 col-md-2 col-lg-1">
+                
+                <%= link_to do %>
+                    <%= fa_icon 'user-plus' %>
+                <% end %>
+
+            </div>
+        </div>
+    <% end %>
+
+    
+<% end %>
