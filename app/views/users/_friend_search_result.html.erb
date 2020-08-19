@@ -4,7 +4,9 @@
         <div class="row friend-card m-2 p-3">
             <div class="col-sm-12 col-md-10 col-lg-11">
                 <p><b>Email: </b><%= f.email %></p>
-                <p class="m-0"><b>Name: </b><%= f.full_name %> </p>
+                <p class="m-0"><b>Name: </b> <%= link_to f.full_name, user_path(f) %> </p>
+               
+
             </div>
             <div class="col-sm-12 col-md-2 col-lg-1">
                 <% if current_user.not_friends_with?(f.id) %>
