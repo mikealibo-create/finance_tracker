@@ -5,7 +5,7 @@
         </div>
         <div class="col-sm-12 col-md-2 col-lg-1">
 
-            <%= link_to do %>
+            <%= link_to friendship_path(f), method: :delete, data: { confirm: "Are you sure?" } do %>
                 <%= fa_icon 'user-times' %>
             <% end %>
             

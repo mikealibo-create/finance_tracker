@@ -26,7 +26,6 @@ class User < ApplicationRecord
     return "#{first_name} #{last_name}" if first_name || last_name 
     "Anonymous"
   end
-  
 
   def self.search(param)
     param.strip!
@@ -39,5 +38,13 @@ class User < ApplicationRecord
           first_name LIKE :search OR 
           last_name LIKE :search", 
           search: "%#{param}%")
+  end
+
+  def except_current_user(users)
+    users.reject { |user| user.id == self.id }
+  end
+
+  def not_friends_with?(id_of_friend)
+    !self.friends.where(id: id_of_friend).exists?
   end
 end
