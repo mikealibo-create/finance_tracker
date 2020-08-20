@@ -1,19 +1,21 @@
 <div class="container">
-  <h2>Details</h2>
-  <div class="row friend-card m-1 p-3">
-    <div class="col-sm-12 col-md-10 col-lg-11">
-        <p><b>Email: </b><%= @user.email %></p>
-        <p class="m-0"><b>Name: </b><%= @user.full_name %> </p>
+  <div class="row">
+    <div class="col-4">
+      <h3>Profile <% if current_user.not_friends_with?(@user) && current_user.id != @user.id %>
+                    <%= link_to friendships_path(friend: @user), method: :post do %>
+                        <%= fa_icon 'user-plus', class: 'pull-right' %>
+                    <% end %>
+                  <% end %>
+      </h3>
+
+      <p><b>Email: </b><%= @user.email %></p>
+      <p class="m-0"><b>Name: </b><%= @user.full_name %></p>
     </div>
-    <div class="col-sm-12 col-md-2 col-lg-1">
-        <% if current_user.not_friends_with?(@user.id) %>
-            <%= link_to friendships_path(friend: @user), method: :post do %>
-                <%= fa_icon 'user-plus' %>
-            <% end %>
-        <% end %>
+
+    <div class="col-8">
+      <h3>Stocks</h3>
+      <%= render 'stocks/list' %>
     </div>
   </div>
-
-  <%= render 'stocks/list' %>
 </div>
 
